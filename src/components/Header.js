@@ -5,7 +5,7 @@ const Header = (props) => {
     return (
         <header className='header'>
             <h1 style={headingStyle}>{props.title}</h1>
-            <button style={{ backgroundColor: 'white' }}>Add</button>
+            <button className='btn'>Add</button>
         </header>
     )
 }
