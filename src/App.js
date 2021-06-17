@@ -29,12 +29,13 @@ function App() {
 
   const deleteTask = (id) => {
     console.log('delete request', id)
+    setTasks(tasks.filter((task) => task.id !== id))
   }
 
   return (
     <div className="container">
       <Header />
-      <Tasks tasks={tasks} onDelete={deleteTask} />
+      {tasks.length > 0 ? <Tasks tasks={tasks} onDelete={deleteTask} /> : ('<h3>No Tasks are scheduled at this time.</h3>')}
     </div>
   );
 }
