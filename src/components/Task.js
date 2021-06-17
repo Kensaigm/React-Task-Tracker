@@ -1,7 +1,7 @@
 const Task = () => {
     return (
-        <div>
-
+        <div className='task'>
+            <h3>data</h3>
         </div>
     )
 }
