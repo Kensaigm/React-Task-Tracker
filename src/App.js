@@ -40,7 +40,9 @@ function App() {
   return (
     <div className="container">
       <Header />
-      {tasks.length > 0 ? <Tasks tasks={tasks} onDelete={deleteTask} /> : (<h3>No Tasks are scheduled at this time.</h3>)}
+      {tasks.length > 0 ? <Tasks tasks={tasks}
+        onDelete={deleteTask}
+        onToggle={toggleReminder} /> : (<h3>No Tasks are scheduled at this time.</h3>)}
     </div>
   );
 }
