@@ -6,28 +6,7 @@ import Add from './components/AddTask'
 function App() {
   const [showAddTask, setShowAddTask] = useState(false)
 
-  const [tasks, setTasks] = useState(
-    [
-      {
-        id: 1,
-        text: 'Check in Updates',
-        day: 'June 25th at 5:30pm',
-        reminder: true,
-      },
-      {
-        id: 2,
-        text: 'Code Review',
-        day: 'June 28th at 8:00am',
-        reminder: true,
-      },
-      {
-        id: 3,
-        text: 'Update Jira',
-        day: 'Everyday at 4:30pm',
-        remidner: false,
-      }
-    ]
-  )
+  const [tasks, setTasks] = useState([])
 
   const addTask = (task) => {
     var sorted_keys = Object.keys(tasks).sort(function (a, b) { return tasks[b] - tasks[a]; });
