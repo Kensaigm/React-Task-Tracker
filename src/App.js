@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Header from './components/Header'
 import Tasks from './components/Tasks'
 import Add from './components/AddTask'
@@ -8,6 +8,22 @@ function App() {
 
   const [tasks, setTasks] = useState([])
 
+  useEffect(() => {
+    const getTasks = async () => {
+      const tasksFromServer = await fetchTasks()
+      setTasks(tasksFromServer)
+    }
+
+    getTasks()
+  }, [])
+
+  const fetchTasks = async () => {
+    const rs = await fetch('http://localhost:5000/tasks')
+    const data = await rs.json()
+    // console.log(data)
+    return data
+  }
+
   const addTask = (task) => {
     var sorted_keys = Object.keys(tasks).sort(function (a, b) { return tasks[b] - tasks[a]; });
     const id = sorted_keys.length + 1
@@ -15,8 +31,9 @@ function App() {
     setTasks([...tasks, newTask])
   }
 
-  const deleteTask = (id) => {
-    console.log('delete request', id)
+  const deleteTask = async (id) => {
+    await fetch(`http://localhost:5000/tasks/${id}`,
+      method: 'DELETE')
     setTasks(tasks.filter((task) => task.id !== id))
   }
 
