@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import Header from './components/Header'
 import Tasks from './components/Tasks'
 import Add from './components/AddTask'
+import Footer from './components/Footer'
 
 function App() {
   const [showAddTask, setShowAddTask] = useState(false)
@@ -83,6 +84,7 @@ function App() {
       {tasks.length > 0 ? (<Tasks tasks={tasks}
         onDelete={deleteTask}
         onToggle={toggleReminder} />) : (<h3>No Tasks are scheduled at this time.</h3>)}
+      <Footer />
     </div>
   );
 }
