@@ -24,11 +24,20 @@ function App() {
     return data
   }
 
-  const addTask = (task) => {
-    var sorted_keys = Object.keys(tasks).sort(function (a, b) { return tasks[b] - tasks[a]; });
-    const id = sorted_keys.length + 1
-    const newTask = { id, ...task }
-    setTasks([...tasks, newTask])
+  const addTask = async (task) => {
+    const rs = await fetch(
+      'http://localhost:5000/tasks', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify(task)
+    }
+    )
+
+    const data = await rs.json()
+
+    setTasks([...tasks, data])
   }
 
   const deleteTask = async (id) => {
