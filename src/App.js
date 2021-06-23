@@ -80,15 +80,18 @@ function App() {
   }
 
   return (
-    <div className="container">
-      <Header onAdd={() => setShowAddTask(!showAddTask)} showAdd={showAddTask} />
-      {showAddTask && <Add onAdd={addTask} />}
-      {tasks.length > 0 ? (<Tasks tasks={tasks}
-        onDelete={deleteTask}
-        onToggle={toggleReminder} />) : (<h3>No Tasks are scheduled at this time.</h3>)}
-      <Footer />
-    </div>
-  );
+    <Router>
+      <div className="container">
+        <Header onAdd={() => setShowAddTask(!showAddTask)} showAdd={showAddTask} />
+        {showAddTask && <Add onAdd={addTask} />}
+        {tasks.length > 0 ? (<Tasks tasks={tasks}
+          onDelete={deleteTask}
+          onToggle={toggleReminder} />) : (<h3>No Tasks are scheduled at this time.</h3>)}
+        <Footer />
+      </div>
+    </Router>
+  )
+
 }
 
 export default App;
