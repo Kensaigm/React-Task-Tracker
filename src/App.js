@@ -87,6 +87,7 @@ function App() {
         {tasks.length > 0 ? (<Tasks tasks={tasks}
           onDelete={deleteTask}
           onToggle={toggleReminder} />) : (<h3>No Tasks are scheduled at this time.</h3>)}
+        <Route path='/about' component={About} />
         <Footer />
       </div>
     </Router>
